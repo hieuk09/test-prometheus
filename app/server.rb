@@ -2,10 +2,12 @@ require 'sinatra'
 require 'http'
 require 'debug'
 
+TOKEN = ''
+
 get '/' do
   result = HTTP.headers(
     'Content-Type' => 'application/json',
-    'Authorization' => 'Bearer <token>'
+    'Authorization' => "Bearer #{TOKEN}"
   ).post(
     'https://grafana-api.prd.int.kaligo.com/api/ds/query',
     json: {
